@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 export default function getPlayers() {
-    const url = 'http://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10';
-
+    // const url = 'http://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10';
+    const url = 'MTAzNT0zNDY3NDAmMTA2NT0zNDg5NDQmaW1hZ2U9aW1hZ2VfYmFzZQ%3D%3D';
+    
     if (url) {
         return axios
             .get(url)

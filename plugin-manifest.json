@@ -9,10 +9,10 @@
     "type": "data_source_provider",
     "identifier": "ibsl-ds",
     "ui_builder_support": true,
-    "dependency_name": "@applicaster/zapp-pipes-provider-ibsl",
+    "dependency_name": "@applicaster/zapp-pipes-provider-ibsl-ds",
     "dependency_version": "0.0.1",
     "dependency_repository_url": [
-        "https://github.com/applicaster/zapp-pipes-provider-ibsl"
+        "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds"
     ],
     "whitelisted_account_ids": [
         "5d1c7b6d458a0a000cab9185",

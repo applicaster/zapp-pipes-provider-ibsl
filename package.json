@@ -1,5 +1,5 @@
 {
-  "name": "@applicaster/zapp-pipes-provider-ibsl",
+  "name": "@applicaster/zapp-pipes-provider-ibsl-ds",
   "version": "0.0.2",
   "description": "data source plugin for IBSL (Israeli basketball association)",
   "main": "lib/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://www.github.com/applicaster/zapp-pipes-provider-ibsl.git"
+    "url": "https://www.github.com/applicaster/zapp-pipes-provider-ibsl-ds.git"
   },
   "keywords": [
     "applicaster",
@@ -23,9 +23,9 @@
   "author": "applicaster",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/applicaster/zapp-pipes-provider-ibsl/issues"
+    "url": "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds/issues"
   },
-  "homepage": "https://github.com/applicaster/zapp-pipes-provider-ibsl#readme",
+  "homepage": "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds#readme",
   "dependencies": {
     "axios": "^0.16.2",
     "xml-js": "^1.6.11"

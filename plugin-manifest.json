@@ -1,0 +1,38 @@
+{
+    "api": {},
+    "platform": null,
+    "author_name": "Maxi Wainberg",
+    "author_email": "m.wainberg@applicaster.com",
+    "manifest_version": "0.0.1",
+    "name": "ibslds",
+    "description": "data source plugin for IBSL (Israeli basketball association)",
+    "type": "data_source_provider",
+    "identifier": "ibslds",
+    "ui_builder_support": true,
+    "dependency_name": "@applicaster/zapp-pipes-provider-ibsl",
+    "dependency_version": "0.0.1",
+    "dependency_repository_url": [
+        "https://github.com/applicaster/zapp-pipes-provider-ibsl"
+    ],
+    "whitelisted_account_ids": [
+        "5d1c7b6d458a0a000cab9185",
+        "5d1c7cd7458a0a0008ab9185",
+        "5d21c90aff613100088a8d0f"
+    ],
+    "min_zapp_sdk": "6.0.1",
+    "deprecated_since_zapp_sdk": "",
+    "unsupported_since_zapp_sdk": "",
+    "scheme": "ibsl",
+    "data_types": [
+        {
+            "label": "players",
+            "value": "players",
+            "documentation": {
+                "link": "https://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10",
+                "input_description": "get players item list",
+                "input_placeholder": "",
+                "input_description_image_url": "..."
+            }
+        }
+    ]
+}

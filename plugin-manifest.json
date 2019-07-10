@@ -3,14 +3,14 @@
     "platform": null,
     "author_name": "Maxi Wainberg",
     "author_email": "m.wainberg@applicaster.com",
-    "manifest_version": "0.0.2",
+    "manifest_version": "0.0.3",
     "name": "Zapp Pipes Provider IBSL",
     "description": "data source plugin for IBSL (Israeli basketball association)",
     "type": "data_source_provider",
     "identifier": "ibsl-ds",
     "ui_builder_support": true,
     "dependency_name": "@applicaster/zapp-pipes-provider-ibsl-ds",
-    "dependency_version": "0.0.2",
+    "dependency_version": "0.0.3",
     "dependency_repository_url": [
         "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds"
     ],
@@ -30,6 +30,16 @@
             "documentation": {
                 "link": "https://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10",
                 "input_description": "get players item list",
+                "input_placeholder": "",
+                "input_description_image_url": "..."
+            }
+        },
+        {
+            "label": "videos",
+            "value": "videos",
+            "documentation": {
+                "link": "https://www.basket.co.il/ws/ws.asmx/videos?video_type=0&team_uid=0&video_items=5&headlines=true",
+                "input_description": "get video item list",
                 "input_placeholder": "",
                 "input_description_image_url": "..."
             }

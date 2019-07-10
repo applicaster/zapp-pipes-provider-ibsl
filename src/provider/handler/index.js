@@ -3,7 +3,7 @@ import { commands } from './comands';
 export const handler = nativeBridge => params => {
   const { type } = params;
 
-  if (!type || ['teams', 'players'].indexOf(type) == -1) {
+  if (!type || ['teams', 'players', 'videos'].indexOf(type) == -1) {
     return nativeBridge.throwError('unknown request');
   }
   

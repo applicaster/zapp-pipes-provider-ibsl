@@ -1,8 +1,9 @@
-import { getTeams, getPlayers  } from './ibsl';
+import { getTeams, getPlayers, getVideos  } from './ibsl';
 
 export const commands = {
   teams: getTeams,
-  players: getPlayers
+  players: getPlayers,
+  videos: getVideos
 };
 
 // import { getCollection } from './getCollection';

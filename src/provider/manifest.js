@@ -1,11 +1,14 @@
 export const manifest = {
-  handlers: ['teams','players'],
+  handlers: ['teams','players','videos'],
   help: {
     teams: {
       description: 'retrieves a list of teams'
     },
     players: {
       description: 'retrieves a list of players'
+    },
+    videos: {
+      description: 'retrieves a list of youtube videos'
     },
     // collection: {
     //   description: 'retrieves a collection or a list of collection',

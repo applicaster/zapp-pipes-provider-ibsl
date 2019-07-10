@@ -3,14 +3,14 @@
     "platform": null,
     "author_name": "Maxi Wainberg",
     "author_email": "m.wainberg@applicaster.com",
-    "manifest_version": "0.0.1",
+    "manifest_version": "0.0.2",
     "name": "Zapp Pipes Provider IBSL",
     "description": "data source plugin for IBSL (Israeli basketball association)",
     "type": "data_source_provider",
     "identifier": "ibsl-ds",
     "ui_builder_support": true,
     "dependency_name": "@applicaster/zapp-pipes-provider-ibsl-ds",
-    "dependency_version": "0.0.1",
+    "dependency_version": "0.0.2",
     "dependency_repository_url": [
         "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds"
     ],

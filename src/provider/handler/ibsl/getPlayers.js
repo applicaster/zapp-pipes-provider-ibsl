@@ -1,16 +1,28 @@
 import axios from 'axios';
 
-export default function getPlayers() {
-    const url = 'http://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10';
-    
+async function getPlayers(url) {
+
     if (url) {
-        return axios
-            .get(url)
+        const { team_id, team_uid } = url;
+        const finalUrl = `http://basket.co.il/ws/ws.asmx/players?team_id=${team_id}&team_uid=${team_uid}`;
+        return await axios
+            .get(finalUrl)
             .then(players => players.data)
-            .then(_handlePlayers);
+            .then(_handlePlayers)
+            .catch(err => _errorObject);
     }
 
     return Promise.reject('no url passed');
+}
+
+const _errorObject = {
+    id: 'players',
+    title: 'שחקנים',
+    type: {
+        value: 'feed'
+    },
+    entry: [],
+    extensions: {}
 }
 
 function _handlePlayers({ players }) {
@@ -31,7 +43,7 @@ function _handlePlayers({ players }) {
                 name: player.name
             },
             link: {
-                href: "maccabi://present?linkUrl=https%3A%2F%2Fmaccabi.co.il%2FplayerApp.asp%3FPlayerID%3D954&showContext=true",
+                href: `ibsl://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/player.asp?PlayerID=${player.player_id}`)}&showContext=true`,
                 type: "link"
             },
             media_group: [
@@ -61,3 +73,5 @@ function _handlePlayers({ players }) {
     }
 
 }
+
+export default getPlayers;

@@ -43,6 +43,16 @@
                 "input_placeholder": "",
                 "input_description_image_url": "..."
             }
+        },
+        {
+            "label": "news",
+            "value": "news",
+            "documentation": {
+                "link": "http://basket.co.il/ws/ws.asmx/news?news_id=0&news_type=0&team_uid=0&news_items=10&headlines=true",
+                "input_description": "get news item list",
+                "input_placeholder": "",
+                "input_description_image_url": "..."
+            }
         }
     ]
 }

@@ -1,24 +1,37 @@
 import axios from 'axios';
 
-export default function getVideos() {
-    const url = 'https://www.basket.co.il/ws/ws.asmx/videos?video_type=0&team_uid=0&video_items=5&headlines=true';
+export default async function getVideos(url) {
 
     if (url) {
-        return axios
-            .get(url)
+        const { video_type, team_uid, video_items, headlines } = url;
+        const finalUrl = `https://www.basket.co.il/ws/ws.asmx/videos?video_type=${video_type}&team_uid=${team_uid}&video_items=${video_items}&headlines=${headlines}`;
+        return await axios
+            .get(finalUrl)
             .then(videos => videos.data)
-            .then(_handleVideos);
+            .then(_handleVideos)
+            .catch(err => _errorObject);
     }
 
     return Promise.reject('no url passed');
 }
 
-function _handleVideos({videos}) {
+const _errorObject = {
+    id: 'videos',
+    title: 'פלייליסט Youtube',
+    type: {
+        value: 'feed'
+    },
+    entry: [],
+    extensions: {}
+}
+
+function _handleVideos({ videos }) {
     return {
+        "id": "videos",
         "type": {
             "value": "feed"
         },
-        "title": "",
+        "title": "פלייליסט Youtube",
         "entry": videos.map(video => ({
             "type": {
                 "value": "video"

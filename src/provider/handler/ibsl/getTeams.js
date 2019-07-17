@@ -51,7 +51,7 @@ function _handleTeams({ teams }) {
                   type: "image",
                   media_item: [
                       {
-                          src: `https://www.basket.co.il${team.team_icon2}`,
+                          src: team.team_icon2,
                           key: "image_base",
                           type: "image"
                       }

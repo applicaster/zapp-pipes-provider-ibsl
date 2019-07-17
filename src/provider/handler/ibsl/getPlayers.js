@@ -51,7 +51,7 @@ function _handlePlayers({ players }) {
                     type: "image",
                     media_item: [
                         {
-                            src: `https://www.basket.co.il${player.pic}`,
+                            src: player.pic,
                             key: "image_base",
                             type: "image"
                         }

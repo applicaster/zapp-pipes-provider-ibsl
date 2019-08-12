@@ -3,7 +3,7 @@
     "platform": null,
     "author_name": "Maxi Wainberg",
     "author_email": "m.wainberg@applicaster.com",
-    "manifest_version": "0.0.5",
+    "manifest_version": "0.0.6",
     "name": "Zapp Pipes Provider IBSL",
     "description": "data source plugin for IBSL (Israeli basketball association)",
     "type": "data_source_provider",

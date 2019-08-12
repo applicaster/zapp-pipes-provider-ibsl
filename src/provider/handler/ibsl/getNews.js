@@ -1,19 +1,23 @@
 import axios from 'axios';
 
+let urlScheme = null;
+
 export default async function getNews(url) {
 
     if (url) {
-        const { news_id, news_type, team_uid, news_items, headlines } = url;
+        const { news_id, news_type, team_uid, news_items, headlines, url_scheme = 'ibsl' } = url;
+        urlScheme = url_scheme;
         const finalUrl = `http://basket.co.il/ws/ws.asmx/news?news_id=${news_id}&news_type=${news_type}&team_uid=${team_uid}&news_items=${news_items}&headlines=${headlines}`;
         return await axios
             .get(finalUrl)
             .then(news => news.data)
             .then(_handleNews)
-            .catch(err => _errorObject);
+            .catch(_errorObject);
     }
 
     return Promise.reject('no url passed');
 }
+
 
 const _errorObject = {
     id: 'news',
@@ -43,7 +47,7 @@ function _handleNews({ news }) {
                 name: ""
             },
             link: {
-                href: `ibsl://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/news.asp?PlayerID=${newItem.art_id}`)}&showContext=true`,
+                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/news.asp?PlayerID=${newItem.art_id}`)}&showContext=true`,
                 type: "link"
             },
             media_group: [

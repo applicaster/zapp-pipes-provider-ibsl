@@ -1,10 +1,13 @@
 import axios from 'axios';
 
+let urlScheme = null;
+
 export default async function getTeams(url) {
 
   if (url) {
-    const { board_id } = url;
+    const { board_id, url_scheme = 'ibsl' } = url;
     const finalUrl = `http://www.basket.co.il/ws/ws.asmx/teams?board_id=${board_id}`;
+    urlScheme = url_scheme;
     return await axios
       .get(finalUrl)
       .then(teams => teams.data)
@@ -43,7 +46,7 @@ function _handleTeams({ teams }) {
               name: ""
           },
           link: {
-              href: `ibsl://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/team.asp?TeamId=${team.team_year_id}`)}&showContext=true`,
+              href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/team.asp?TeamId=${team.team_year_id}`)}&showContext=true`,
               type: "link"
           },
           media_group: [

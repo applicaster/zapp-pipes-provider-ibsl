@@ -17,7 +17,8 @@
     "whitelisted_account_ids": [
         "5d1c7b6d458a0a000cab9185",
         "5d1c7cd7458a0a0008ab9185",
-        "5d21c90aff613100088a8d0f"
+        "5d21c90aff613100088a8d0f",
+        "5d5d06133c9b88000cb9c30e"
     ],
     "min_zapp_sdk": "4.0",
     "deprecated_since_zapp_sdk": "",

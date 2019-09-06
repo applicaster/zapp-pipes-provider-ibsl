@@ -1,17 +1,31 @@
 import axios from 'axios';
 
-export default function getPlayers() {
-    // const url = 'http://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10';
-    const url = 'MTAzNT0zNDY3NDAmMTA2NT0zNDg5NDQmaW1hZ2U9aW1hZ2VfYmFzZQ%3D%3D';
-    
+let urlScheme = null;
+
+async function getPlayers(url) {
+
     if (url) {
-        return axios
-            .get(url)
+        const { team_id, team_uid, cYear = 0, url_scheme = 'ibsl' } = url;
+        const finalUrl = `https://basket.co.il/ws/ws.asmx/Players?team_id=${team_id}&team_uid=${team_uid}&cYear=${cYear}`;
+        urlScheme = url_scheme;
+        return await axios
+            .get(finalUrl)
             .then(players => players.data)
-            .then(_handlePlayers);
+            .then(_handlePlayers)
+            .catch(err => _errorObject);
     }
 
     return Promise.reject('no url passed');
+}
+
+const _errorObject = {
+    id: 'players',
+    title: 'שחקנים',
+    type: {
+        value: 'feed'
+    },
+    entry: [],
+    extensions: {}
 }
 
 function _handlePlayers({ players }) {
@@ -26,13 +40,13 @@ function _handlePlayers({ players }) {
                 value: 'link'
             },
             id: player.player_id,
-            title: player.name,
+            title: player.name.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
             summary: "",
             author: {
-                name: player.name
+                name: player.name.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"')
             },
             link: {
-                href: "maccabi://present?linkUrl=https%3A%2F%2Fmaccabi.co.il%2FplayerApp.asp%3FPlayerID%3D954&showContext=true",
+                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/player.asp?PlayerID=${player.player_id}`)}&showContext=true`,
                 type: "link"
             },
             media_group: [
@@ -40,7 +54,7 @@ function _handlePlayers({ players }) {
                     type: "image",
                     media_item: [
                         {
-                            src: `https://www.basket.co.il${player.pic}`,
+                            src: `https://basket.co.il${player.pic}`,
                             key: "image_base",
                             type: "image"
                         }
@@ -48,17 +62,19 @@ function _handlePlayers({ players }) {
                 }
             ],
             extensions: {
-                jersy: "08",
-                year_id: "2020",
-                team_id: "1010",
-                isReplaced: "False",
-                isLocal: "False",
-                Height: "2.00",
-                position: "פורוורד",
-                nationality: "ישראל",
-                birth_date: "14/08/1997"
+                jersy: player.jersy,
+                year_id: player.year_id,
+                team_id: player.team_id,
+                isReplaced: player.isReplaced,
+                isLocal: player.isLocal,
+                Height: player.Height,
+                position: player.position,
+                nationality: player.nationality,
+                birth_date: player.birth_date
             }
         }))
     }
 
 }
+
+export default getPlayers;

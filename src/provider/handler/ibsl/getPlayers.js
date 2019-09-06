@@ -5,8 +5,8 @@ let urlScheme = null;
 async function getPlayers(url) {
 
     if (url) {
-        const { team_id, team_uid, url_scheme = 'ibsl' } = url;
-        const finalUrl = `http://basket.co.il/ws/ws.asmx/players?team_id=${team_id}&team_uid=${team_uid}`;
+        const { team_id, team_uid, cYear = 0, url_scheme = 'ibsl' } = url;
+        const finalUrl = `https://basket.co.il/ws/ws.asmx/Players?team_id=${team_id}&team_uid=${team_uid}&cYear=${cYear}`;
         urlScheme = url_scheme;
         return await axios
             .get(finalUrl)
@@ -40,10 +40,10 @@ function _handlePlayers({ players }) {
                 value: 'link'
             },
             id: player.player_id,
-            title: player.name,
+            title: player.name.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
             summary: "",
             author: {
-                name: player.name
+                name: player.name.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"')
             },
             link: {
                 href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/player.asp?PlayerID=${player.player_id}`)}&showContext=true`,
@@ -54,7 +54,7 @@ function _handlePlayers({ players }) {
                     type: "image",
                     media_item: [
                         {
-                            src: player.pic,
+                            src: `https://basket.co.il${player.pic}`,
                             key: "image_base",
                             type: "image"
                         }
@@ -62,15 +62,15 @@ function _handlePlayers({ players }) {
                 }
             ],
             extensions: {
-                jersy: "08",
-                year_id: "2020",
-                team_id: "1010",
-                isReplaced: "False",
-                isLocal: "False",
-                Height: "2.00",
-                position: "פורוורד",
-                nationality: "ישראל",
-                birth_date: "14/08/1997"
+                jersy: player.jersy,
+                year_id: player.year_id,
+                team_id: player.team_id,
+                isReplaced: player.isReplaced,
+                isLocal: player.isLocal,
+                Height: player.Height,
+                position: player.position,
+                nationality: player.nationality,
+                birth_date: player.birth_date
             }
         }))
     }

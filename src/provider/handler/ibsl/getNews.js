@@ -7,7 +7,7 @@ export default async function getNews(url) {
     if (url) {
         const { news_id, news_type, team_uid, news_items, headlines, url_scheme = 'ibsl' } = url;
         urlScheme = url_scheme;
-        const finalUrl = `http://basket.co.il/ws/ws.asmx/news?news_id=${news_id}&news_type=${news_type}&team_uid=${team_uid}&news_items=${news_items}&headlines=${headlines}`;
+        const finalUrl = `https://basket.co.il/ws/ws.asmx/News?news_id=${news_id}&news_type=${news_type}&team_uid=${team_uid}&news_items=${news_items}&headlines=${headlines}`;
         return await axios
             .get(finalUrl)
             .then(news => news.data)
@@ -41,8 +41,8 @@ function _handleNews({ news }) {
                 value: 'link'
             },
             id: newItem.art_id,
-            title: newItem.art_title,
-            summary: newItem.art_abstract,
+            title: newItem.art_title.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
+            summary: newItem.art_abstract.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
             author: {
                 name: ""
             },

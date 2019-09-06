@@ -8,16 +8,15 @@ let teamsList;
 export default async function getGames(url) {
 
     if (url) {
-        const { board_id, board_round, team_id, team_uid, game_id, url_scheme = 'ibsl' } = url;
+        const { board_id, board_round, team_id, team_uid, game_id, cYear = 0, url_scheme = 'ibsl' } = url;
         boardID = board_id;
         urlScheme = url_scheme;
 
-        await axios.get(`http://www.basket.co.il/ws/ws.asmx/teams?board_id=${board_id}`)
+        await axios.get(`https://www.basket.co.il/ws/ws.asmx/Teams?board_id=${board_id}&cYear=${cYear}`)
             .then(teams => teams.data)
             .then((teams) =>  teamsList = teams.teams);
 
-        const finalUrl = `http://basket.co.il/ws/ws.asmx/games?board_id=${board_id}&board_round=${board_round}&team_id=${team_id}&team_uid=${team_uid}&game_id=${game_id}`;
-
+        const finalUrl = `https://basket.co.il/ws/ws.asmx/Games?board_id=${board_id}&board_round=${board_round}&team_id=${team_id}&team_uid=${team_uid}&game_id=${game_id}&cYear=${cYear}`;
         return await axios
             .get(finalUrl)
             .then(games => games.data)
@@ -30,7 +29,7 @@ export default async function getGames(url) {
 
 function teamPic(teamID) {
     const teamSelected = teamsList.filter(team => team.team_year_id === teamID);
-    return teamSelected[0].team_icon2;
+    return `https://www.basket.co.il${teamSelected[0].team_icon2}`;
 }
 
 const _errorObject = {
@@ -43,7 +42,7 @@ const _errorObject = {
     extensions: {}
 }
 
-function _handleGames({ games }, teamsList) {
+function _handleGames({ games }) {
 
     return {
         id: 'games',

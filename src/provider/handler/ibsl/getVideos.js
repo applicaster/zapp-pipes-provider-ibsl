@@ -40,8 +40,8 @@ function _handleVideos({ videos }) {
                 "value": "video"
             },
             "id": video.id,
-            "title": video.title,
-            "summary": video.title,
+            "title": video.title.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
+            "summary": video.title.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
             "published": "",
             "updated": "",
             "media_group": [
@@ -50,7 +50,7 @@ function _handleVideos({ videos }) {
                     "media_item": [
                         {
                             "key": "image_base",
-                            "src": video.pic
+                            "src": `https://basket.co.il${video.pic}`
                         }
                     ]
                 }

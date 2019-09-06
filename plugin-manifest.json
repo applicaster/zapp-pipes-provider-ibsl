@@ -3,14 +3,14 @@
     "platform": null,
     "author_name": "Maxi Wainberg",
     "author_email": "m.wainberg@applicaster.com",
-    "manifest_version": "0.0.61",
+    "manifest_version": "0.0.62",
     "name": "Zapp Pipes Provider IBSL",
     "description": "data source plugin for IBSL (Israeli basketball association)",
     "type": "data_source_provider",
     "identifier": "ibsl-ds",
     "ui_builder_support": true,
     "dependency_name": "@applicaster/zapp-pipes-provider-ibsl-ds",
-    "dependency_version": "0.0.61",
+    "dependency_version": "0.0.62",
     "dependency_repository_url": [
         "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds"
     ],
@@ -29,7 +29,7 @@
             "label": "players",
             "value": "players",
             "documentation": {
-                "link": "https://basket.co.il/ws/ws.asmx/players?team_id=1010&team_uid=10",
+                "link": "https://basket.co.il/ws/ws.asmx/Players?team_id=1010&team_uid=10",
                 "input_description": "get players item list",
                 "input_placeholder": "",
                 "input_description_image_url": "..."
@@ -39,7 +39,7 @@
             "label": "videos",
             "value": "videos",
             "documentation": {
-                "link": "https://www.basket.co.il/ws/ws.asmx/videos?video_type=0&team_uid=0&video_items=5&headlines=true",
+                "link": "https://www.basket.co.il/ws/ws.asmx/Videos?video_type=0&team_uid=0&video_items=5&headlines=true",
                 "input_description": "get video item list",
                 "input_placeholder": "",
                 "input_description_image_url": "..."
@@ -49,7 +49,7 @@
             "label": "news",
             "value": "news",
             "documentation": {
-                "link": "https://basket.co.il/ws/ws.asmx/news?news_id=0&news_type=0&team_uid=0&news_items=10&headlines=true",
+                "link": "https://basket.co.il/ws/ws.asmx/News?news_id=0&news_type=0&team_uid=0&news_items=10&headlines=true",
                 "input_description": "get news item list",
                 "input_placeholder": "",
                 "input_description_image_url": "..."
@@ -59,7 +59,7 @@
             "label": "games",
             "value": "games",
             "documentation": {
-                "link": "https://basket.co.il/ws/ws.asmx/games?board_id=5&board_round=0&team_id=0&team_uid=0&game_id=0",
+                "link": "https://basket.co.il/ws/ws.asmx/Games?board_id=5&board_round=0&team_id=0&team_uid=0&game_id=0",
                 "input_description": "get games item list",
                 "input_placeholder": "",
                 "input_description_image_url": "..."

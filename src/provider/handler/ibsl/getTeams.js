@@ -40,8 +40,8 @@ function _handleTeams({ teams }) {
               value: 'link'
           },
           id: team.team_year_id,
-          title: team.team_shortName.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
-          summary: team.team.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
+          title: team.team_shortName.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
+          summary: team.team.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
           author: {
               name: ""
           },

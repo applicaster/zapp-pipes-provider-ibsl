@@ -40,10 +40,10 @@ function _handlePlayers({ players }) {
                 value: 'link'
             },
             id: player.player_id,
-            title: player.name.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
+            title: player.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
             summary: "",
             author: {
-                name: player.name.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"')
+                name: player.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"')
             },
             link: {
                 href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/player.asp?PlayerID=${player.player_id}`)}&showContext=true`,

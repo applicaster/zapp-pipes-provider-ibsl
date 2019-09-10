@@ -6,7 +6,7 @@ export default async function getVideos(url) {
 
     if (url) {
         const { video_type, team_uid, video_items, headlines, url_scheme = 'ibsl' } = url;
-        const finalUrl = `https://www.basket.co.il/ws/ws.asmx/videos?video_type=${video_type}&team_uid=${team_uid}&video_items=${video_items}&headlines=${headlines}`;
+        const finalUrl = `https://www.basket.co.il/ws/ws.asmx/Videos?video_type=${video_type}&team_uid=${team_uid}&video_items=${video_items}&headlines=${headlines}`;
         urlScheme = url_scheme;
         return await axios
             .get(finalUrl)
@@ -40,8 +40,8 @@ function _handleVideos({ videos }) {
                 "value": "video"
             },
             "id": video.id,
-            "title": video.title.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
-            "summary": video.title.replace(/&#34;/g, '"').replace(/&#39;/,"'").replace(/&quot;/g,'"'),
+            "title": video.title.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
+            "summary": video.title.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
             "published": "",
             "updated": "",
             "media_group": [

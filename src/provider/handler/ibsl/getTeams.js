@@ -74,8 +74,8 @@ function _handleTeams({ teams }) {
             team_pic: `https://basket.co.il${team.team_pic}`,
             team_email: team.team_email,
             team_phone: team.team_phone,
-            team_address: team.team_address,
-            team_sponsers: team.team_sponsers,
+            team_address: team.team_address.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
+            team_sponsers: team.team_sponsers.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
             team_social_link: team.team_social_link,
             team_twitter: team.team_twitter,
             team_insta: team.team_insta,
@@ -90,7 +90,7 @@ function _handleTeams({ teams }) {
             team_twitter1: team.team_twitter1,
             team_insta1: team.team_insta1,
             team_youtube1: team.team_youtube1,
-            COACHES: team.COACHES
+            COACHES: team.COACHES.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"')
           }
       }))
   }

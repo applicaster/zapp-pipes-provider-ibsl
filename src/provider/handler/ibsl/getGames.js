@@ -29,7 +29,10 @@ export default async function getGames(url) {
 
 function teamPic(teamID) {
     const teamSelected = teamsList.filter(team => team.team_year_id === teamID);
-    return `https://www.basket.co.il${teamSelected[0].team_icon2}`;
+    if(teamSelected.length > 0){
+        return `https://www.basket.co.il${teamSelected[0].team_icon2}`
+    }
+    return "";
 }
 
 const _errorObject = {
@@ -84,14 +87,14 @@ function _handleGames({ games }) {
                     team1_name: gameItem.team1_name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
                     team1_pic: teamPic(gameItem.team1),
                     team2: gameItem.team2.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
-                    team2_name: gameItem.team2_name,
+                    team2_name: gameItem.team2_name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
                     team2_pic: teamPic(gameItem.team2),
                     score_team1: gameItem.score_team1,
                     score_team2: gameItem.score_team2,
                     BOARD_ID: gameItem.BOARD_ID,
                     gameNumber: gameItem.gameNumber,
                     TimeOfGame: gameItem.TimeOfGame,
-                    PlaceOfGameHeb: gameItem.PlaceOfGameHeb,
+                    PlaceOfGameHeb: gameItem.PlaceOfGameHeb.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
                     Ref: gameItem.Ref,
                     total_viewers: gameItem.total_viewers,
                     overtime: gameItem.overtime,

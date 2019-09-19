@@ -38,13 +38,13 @@ function _handleCoaches({ coaches }) {
             value: 'feed'
         },
         entry: coaches.map(coachesItem => {
-            return ({
+            return {
                 type: {
                     value: 'link'
                 },
                 id: coachesItem.coach_id,
-                title: coachesItem.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
-                summary: coachesItem.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
+                title: coachesItem.name.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
+                summary: coachesItem.name.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
                 author: {
                     name: ""
                 },
@@ -73,7 +73,7 @@ function _handleCoaches({ coaches }) {
                     mOrder: coachesItem.mOrder,
                     birth_date: coachesItem.birth_date
                 }
-            })
+            }
         })
     }
 

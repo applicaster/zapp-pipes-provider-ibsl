@@ -1,5 +1,5 @@
 export const manifest = {
-  handlers: ['teams', 'players', 'videos', 'news', 'games', 'coaches'],
+  handlers: ['teams', 'players', 'videos', 'news', 'games', 'gamesByTeam', 'coaches'],
   help: {
     teams: {
       description: 'retrieves a list of teams'
@@ -14,6 +14,9 @@ export const manifest = {
       description: 'retrieves a list of news items'
     },
     games: {
+      description: 'retrieves a list of games for all teams'
+    },
+    gamesByTeam: {
       description: 'retrieves a list of games / games by team'
     },
     coaches: {

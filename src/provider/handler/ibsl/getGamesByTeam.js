@@ -5,16 +5,14 @@ import { stringify } from 'querystring';
 let urlScheme = null;
 let boardID;
 let teamsList;
-export default async function getGames(url) {
+export default async function getGamesByTeam(url) {
 
     if (url) {
-        const { board_id, board_round, team_id, team_uid, game_id, cYear = 0, url_scheme = 'ibsl' } = url;
-
-
+        const { board_id, team_uid, cYear = 0, url_scheme = 'ibsl' } = url;
         boardID = board_id;
         urlScheme = url_scheme;
 
-        const finalUrl = `https://basket.co.il/ws/ws.asmx/Games?board_id=${board_id}&board_round=${board_round}&team_id=${team_id}&team_uid=${team_uid}&game_id=${game_id}&cYear=${cYear}`;
+        const finalUrl = `https://basket.co.il/ws/ws.asmx/GamesByTeam?team_uid=${team_uid}&cYear=${cYear}`;
         return await axios
             .get(finalUrl)
             .then(games => games.data)

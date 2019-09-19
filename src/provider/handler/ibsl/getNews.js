@@ -41,8 +41,8 @@ function _handleNews({ news }) {
                 value: 'link'
             },
             id: newItem.art_id,
-            title: newItem.art_title.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
-            summary: newItem.art_abstract.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
+            title: newItem.art_title.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
+            summary: newItem.art_abstract.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
             author: {
                 name: ""
             },

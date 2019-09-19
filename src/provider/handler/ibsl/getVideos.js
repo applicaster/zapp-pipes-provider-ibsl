@@ -30,40 +30,40 @@ const _errorObject = {
 
 function _handleVideos({ videos }) {
     return {
-        "id": "videos",
-        "type": {
-            "value": "feed"
+        id: "videos",
+        type: {
+            value: "feed"
         },
-        "title": "פלייליסט Youtube",
-        "entry": videos.map(video => ({
-            "type": {
-                "value": "video"
+        title: "פלייליסט Youtube",
+        entry: videos.map(video => ({
+            type: {
+                value: "video"
             },
-            "id": video.id,
-            "title": video.title.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
-            "summary": video.title.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
-            "published": "",
-            "updated": "",
-            "media_group": [
+            id: video.id,
+            title: video.title.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
+            summary: video.title.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
+            published: "",
+            updated: "",
+            media_group: [
                 {
-                    "type": "image",
-                    "media_item": [
+                    type: "image",
+                    media_item: [
                         {
-                            "key": "image_base",
-                            "src": `https://basket.co.il${video.pic}`
+                            key: "image_base",
+                            src: `https://basket.co.il${video.pic}`
                         }
                     ]
                 }
             ],
-            "content": {
-                "type": "youtube-id",
-                "src": video.external_id
+            content: {
+                type: "youtube-id",
+                src: video.external_id
             },
-            "link": {
-                "rel": "alternate",
-                "href": video.video_url
+            link: {
+                rel: "alternate",
+                href: video.video_url
             }
         })),
-        "extensions": {}
+        extensions: {}
     }
 }

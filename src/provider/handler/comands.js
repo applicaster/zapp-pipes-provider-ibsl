@@ -1,4 +1,4 @@
-import { getTeams, getPlayers, getVideos, getNews, getGames, getCoaches } from './ibsl';
+import { getTeams, getPlayers, getVideos, getNews, getGames, getCoaches, getGamesByTeam } from './ibsl';
 
 export const commands = {
   teams: getTeams,
@@ -6,5 +6,6 @@ export const commands = {
   videos: getVideos,
   news: getNews,
   games: getGames,
+  gamesByTeam: getGamesByTeam,
   coaches: getCoaches
 };

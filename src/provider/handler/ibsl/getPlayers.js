@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 let urlScheme = null;
+let linkUrl;
 
 async function getPlayers(url) {
 
     if (url) {
-        const { team_id, team_uid, cYear = 0, url_scheme = 'ibsl' } = url;
+        const { team_id, team_uid, cYear = 0, url_scheme = 'ibsl', link_url } = url;
         const finalUrl = `https://basket.co.il/ws/ws.asmx/Players?team_id=${team_id}&team_uid=${team_uid}&cYear=${cYear}`;
         urlScheme = url_scheme;
+        linkUrl = link_url;
         return await axios
             .get(finalUrl)
             .then(players => players.data)
@@ -46,7 +48,7 @@ function _handlePlayers({ players }) {
                 name: player.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"')
             },
             link: {
-                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/player.asp?PlayerID=${player.player_id}`)}&showContext=true`,
+                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`${linkUrl}${player.player_id}`)}&showContext=true`,
                 type: "link"
             },
             media_group: [

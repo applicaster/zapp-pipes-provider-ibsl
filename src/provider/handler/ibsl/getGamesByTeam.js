@@ -5,12 +5,15 @@ import { stringify } from 'querystring';
 let urlScheme = null;
 let boardID;
 let teamsList;
+let statusOverride;
+
 export default async function getGamesByTeam(url) {
 
     if (url) {
-        const { board_id, team_uid, cYear = 0, url_scheme = 'ibsl' } = url;
+        const { board_id, team_uid, cYear = 0, url_scheme = 'ibsl', status_override = false } = url;
         boardID = board_id;
         urlScheme = url_scheme;
+        statusOverride = status_override;
 
         const finalUrl = `https://basket.co.il/ws/ws.asmx/GamesByTeam?team_uid=${team_uid}&cYear=${cYear}`;
         return await axios
@@ -52,7 +55,7 @@ function _handleGames({ games }) {
                 name: ""
             },
             link: {
-                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/news.asp?PlayerID=${gameItem.game_id}`)}&showContext=true`,
+                href: "",
                 type: "link"
             },
             media_group: [
@@ -88,7 +91,8 @@ function _handleGames({ games }) {
                 total_ot: gameItem.total_ot,
                 score_by_q_1: gameItem.score_by_q_1,
                 score_by_q_2: gameItem.score_by_q_2,
-                tickets_url: gameItem.tickets_url
+                tickets_url: gameItem.tickets_url,
+                statusOverride: statusOverride
             }
         }))
     }

@@ -1,12 +1,15 @@
 import axios from 'axios';
 
 let urlScheme = null;
+let linkUrl;
 
 export default async function getNews(url) {
 
     if (url) {
-        const { news_id, news_type, team_uid, news_items, headlines, url_scheme = 'ibsl' } = url;
+        const { news_id, news_type, team_uid, news_items, headlines, url_scheme = 'ibsl', link_url } = url;
         urlScheme = url_scheme;
+        linkUrl = link_url;
+
         const finalUrl = `https://basket.co.il/ws/ws.asmx/News?news_id=${news_id}&news_type=${news_type}&team_uid=${team_uid}&news_items=${news_items}&headlines=${headlines}`;
         return await axios
             .get(finalUrl)
@@ -47,7 +50,7 @@ function _handleNews({ news }) {
                 name: ""
             },
             link: {
-                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/news.asp?PlayerID=${newItem.art_id}`)}&showContext=true`,
+                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`${linkUrl}${newItem.art_id}`)}&showContext=true`,
                 type: "link"
             },
             media_group: [

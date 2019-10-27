@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 let urlScheme = null;
+let linkUrl;
 
 export default async function getTeams(url) {
 
   if (url) {
-    const { board_id, cYear = 0, url_scheme = 'ibsl' } = url;
+    const { board_id, cYear = 0, url_scheme = 'ibsl', link_url } = url;
     const finalUrl = `https://www.basket.co.il/ws/ws.asmx/Teams?board_id=${board_id}&cYear=${cYear}`;
     urlScheme = url_scheme;
+    linkUrl = link_url;
     return await axios
       .get(finalUrl)
       .then(teams => teams.data)
@@ -46,7 +48,7 @@ function _handleTeams({ teams }) {
               name: ""
           },
           link: {
-              href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`https://www.basket.co.il/team.asp?TeamId=${team.team_year_id}`)}&showContext=true`,
+              href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`${linkUrl}${team.team_year_id}`)}&showContext=true`,
               type: "link"
           },
           media_group: [

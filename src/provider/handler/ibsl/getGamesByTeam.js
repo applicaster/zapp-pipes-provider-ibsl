@@ -92,7 +92,8 @@ function _handleGames({ games }) {
                 score_by_q_1: gameItem.score_by_q_1,
                 score_by_q_2: gameItem.score_by_q_2,
                 tickets_url: gameItem.tickets_url,
-                statusOverride: statusOverride
+                statusOverride: statusOverride,
+                ExternalID: gameItem.ExternalID
             }
         }))
     }

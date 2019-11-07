@@ -13,6 +13,9 @@ async function getPlayers(url) {
         return await axios
             .get(finalUrl)
             .then(players => players.data)
+            .then(data => data.players.filter( player => {
+                return (/false/i).test(player.isReplaced)
+            }))
             .then(_handlePlayers)
             .catch(err => _errorObject);
     }
@@ -30,7 +33,7 @@ const _errorObject = {
     extensions: {}
 }
 
-function _handlePlayers({ players }) {
+function _handlePlayers( players ) {    
     return {
         id: 'players',
         title: 'שחקנים',
@@ -78,5 +81,6 @@ function _handlePlayers({ players }) {
     }
 
 }
+
 
 export default getPlayers;

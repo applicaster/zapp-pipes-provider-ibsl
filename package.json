@@ -1,6 +1,6 @@
 {
   "name": "@applicaster/zapp-pipes-provider-ibsl-ds",
-  "version": "0.0.67",
+  "version": "0.1.0",
   "description": "data source plugin for IBSL (Israeli basketball association)",
   "main": "lib/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
-    "@applicaster/zapp-pipes-dev-kit": "^1.2.1",
+    "@applicaster/zapp-pipes-dev-kit": "^1.4.1",
     "babel-cli": "^6.24.0",
     "babel-jest": "^22.4.1",
     "babel-loader": "^7.1.2",

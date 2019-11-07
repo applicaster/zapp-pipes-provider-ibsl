@@ -14,7 +14,7 @@ export default async function getNews(url) {
         return await axios
             .get(finalUrl)
             .then(news => news.data)
-            .then(_handleNews)
+            .then( data => _handleNews(data, team_uid == 0))
             .catch(_errorObject);
     }
 
@@ -32,7 +32,7 @@ const _errorObject = {
     extensions: {}
 }
 
-function _handleNews({ news }) {
+function _handleNews({ news }, shouldUseArtID) {
     return {
         id: 'news',
         title: 'חדשות',
@@ -43,7 +43,7 @@ function _handleNews({ news }) {
             type: {
                 value: 'link'
             },
-            id: newItem.art_id,
+            id: shouldUseArtID ? newItem.art_id : newItem.id,
             title: newItem.art_title.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
             summary: newItem.art_abstract.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
             author: {

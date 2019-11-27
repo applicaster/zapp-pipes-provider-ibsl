@@ -48,8 +48,8 @@ function _handleTeams({ teams }) {
               name: ""
           },
           link: {
-              href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`${linkUrl}${team.team_year_id}`)}&showContext=true`,
-              type: "link"
+              href: `${linkUrl}${team.team_year_id}&app=true&showContext=true`,
+              type: "alternate"
           },
           media_group: [
               {

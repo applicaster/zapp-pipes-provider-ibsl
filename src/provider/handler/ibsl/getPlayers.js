@@ -51,8 +51,8 @@ function _handlePlayers( players ) {
                 name: player.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"')
             },
             link: {
-                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`${linkUrl}${player.player_id}`)}&showContext=true`,
-                type: "link"
+                href: `${linkUrl}${player.player_id}&app=true&showContext=true`,
+                type: "alternate"
             },
             media_group: [
                 {

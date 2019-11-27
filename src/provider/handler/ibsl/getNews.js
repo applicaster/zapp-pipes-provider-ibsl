@@ -50,8 +50,8 @@ function _handleNews({ news }, shouldUseArtID) {
                 name: ""
             },
             link: {
-                href: `${urlScheme}://present?linkUrl=${encodeURIComponent(`${linkUrl}${shouldUseArtID ? newItem.art_id : newItem.id}`)}&showContext=true`,
-                type: "link"
+                href: `${linkUrl}${shouldUseArtID ? newItem.art_id : newItem.id}&app=true&showContext=true`,
+                type: "alternate"
             },
             media_group: [
                 {

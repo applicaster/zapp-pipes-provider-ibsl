@@ -14,7 +14,7 @@ export default async function getNews(url) {
         return await axios
             .get(finalUrl)
             .then(news => news.data)
-            .then( data => _handleNews(data, team_uid == 0))
+            .then(data => _handleNews(data, team_uid == 0))
             .catch(_errorObject);
     }
 
@@ -51,7 +51,7 @@ function _handleNews({ news }, shouldUseArtID) {
             },
             link: {
                 href: `${linkUrl}${shouldUseArtID ? newItem.art_id : newItem.id}&app=true&showContext=true`,
-                type: "alternate"
+                rel: "alternate"
             },
             media_group: [
                 {

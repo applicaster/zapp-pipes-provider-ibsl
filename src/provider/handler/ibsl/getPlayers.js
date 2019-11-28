@@ -13,7 +13,7 @@ async function getPlayers(url) {
         return await axios
             .get(finalUrl)
             .then(players => players.data)
-            .then(data => data.players.filter( player => {
+            .then(data => data.players.filter(player => {
                 return (/false/i).test(player.isReplaced)
             }))
             .then(_handlePlayers)
@@ -33,7 +33,7 @@ const _errorObject = {
     extensions: {}
 }
 
-function _handlePlayers( players ) {    
+function _handlePlayers(players) {
     return {
         id: 'players',
         title: 'שחקנים',
@@ -45,14 +45,14 @@ function _handlePlayers( players ) {
                 value: 'link'
             },
             id: player.player_id,
-            title: player.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"'),
+            title: player.name.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
             summary: "",
             author: {
-                name: player.name.replace(/&#34;/g, '"').replace(/&#39;/g,"'").replace(/&quot;/g,'"')
+                name: player.name.replace(/&#34;/g, '"').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
             },
             link: {
                 href: `${linkUrl}${player.player_id}&app=true&showContext=true`,
-                type: "alternate"
+                rel: "alternate"
             },
             media_group: [
                 {

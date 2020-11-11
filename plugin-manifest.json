@@ -20,10 +20,12 @@
         "5d21c90aff613100088a8d0f",
         "5d5d06133c9b88000cb9c30e"
     ],
-    "min_zapp_sdk": "4.0",
+    "min_zapp_sdk": "1.0.0",
     "deprecated_since_zapp_sdk": "",
     "unsupported_since_zapp_sdk": "",
     "scheme": "ibsl",
+    "targets": ["mobile"],
+    "ui_frameworks": ["quickbrick", "native"],
     "data_types": [
         {
             "label": "teams",

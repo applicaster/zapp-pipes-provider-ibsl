@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/applicaster/zapp-pipes-provider-ibsl-ds#readme",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {

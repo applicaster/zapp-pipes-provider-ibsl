@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { BASE_URL } from '../config/const';
 
 let urlScheme = null;
 let linkUrl;
@@ -10,7 +11,7 @@ export default async function getNews(url) {
         urlScheme = url_scheme;
         linkUrl = link_url;
 
-        const finalUrl = `https://basket.co.il/ws/ws.asmx/News?news_id=${news_id}&news_type=${news_type}&team_uid=${team_uid}&news_items=${news_items}&headlines=${headlines}`;
+        const finalUrl = `${BASE_URL.PROD}/News?news_id=${news_id}&news_type=${news_type}&team_uid=${team_uid}&news_items=${news_items}&headlines=${headlines}`;
         return await axios
             .get(finalUrl)
             .then(news => news.data)
@@ -34,7 +35,7 @@ const _errorObject = {
 
 function _handleNews({ news }, shouldUseArtID) {
     return {
-        id: 'news',
+        id: 'news',and 
         title: 'חדשות',
         type: {
             value: 'feed'
